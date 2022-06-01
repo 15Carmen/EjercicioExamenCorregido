@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class RegistroEmpresas extends Empresa implements Serializable {
+
     //atributos:
 
     private double importeTotalSinIva = 0.0;

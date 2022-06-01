@@ -47,6 +47,7 @@ public class Utilidades {
      * @param ficheroEntrada
      * @return una lista ordenada y sin duplicados con el mismo formato que el registro de entrada
      */
+
     public static Set<EmpresaFacturas> procesarFichero(FileReader ficheroEntrada) {
         Set<EmpresaFacturas> listaEmpresas = new TreeSet<>();
         EmpresaFacturas empresaFacturas = null;
@@ -63,6 +64,7 @@ public class Utilidades {
         try {
             buffer = new BufferedReader(ficheroEntrada);
             registro = buffer.readLine();
+
             while (registro != null) {
                 scanner = new Scanner(registro);
                 while (scanner.hasNext()) {

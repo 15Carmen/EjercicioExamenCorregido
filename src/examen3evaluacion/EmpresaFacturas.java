@@ -3,10 +3,11 @@ package examen3evaluacion;
 import java.io.Serializable;
 import java.util.Arrays;
 
-/*
-Es la clase del registro de entrada. Tiene el mismo formato que ese registro
+/**
+ * Es la clase del registro de entrada. Tiene el mismo formato que ese registro
  */
 public class EmpresaFacturas extends Empresa implements Serializable, Comparable {
+
     //atributos:
     private String codigoEnvio = "";// Código del envío: Cadena de 8 dígitos compuesto por las iniciales de la empresa y un número único por envío.
     private Concepto[] conceptos = new Concepto[4];//Hasta un máximo de 4 conceptos a facturar.
@@ -35,6 +36,32 @@ public class EmpresaFacturas extends Empresa implements Serializable, Comparable
         this.importeBonificacion = calcImporteBonificacion();
     }
 
+    public double calcImporteTotalConIva() {
+        double suma = 0.0;
+        for (int i = 0; i < this.conceptos.length; i++) {
+            suma += this.conceptos[i].getImportefinalFra();
+
+        }
+        return suma;
+    }
+
+    public double calcImporteTotalSinIva() {
+        double suma = 0.0;
+        for (int i = 0; i < this.conceptos.length; i++) {
+            suma += this.conceptos[i].getImporteFraSinIva();
+
+        }
+        return suma;
+    }
+
+    public String[] calcCodFras() {
+        String[] codFras = new String[4];
+        for (int i = 0; i < conceptos.length; i++) {
+            codFras[i] = conceptos[i].getCodFra();
+        }
+        return codFras;
+    }
+
     public double calcImporteBonificacion() {
         double resultado = 0.0;
 
@@ -50,31 +77,6 @@ public class EmpresaFacturas extends Empresa implements Serializable, Comparable
         return resultado;
     }
 
-    public String[] calcCodFras() {
-        String[] codFras = new String[4];
-        for (int i = 0; i < conceptos.length; i++) {
-            codFras[i] = conceptos[i].getCodFra();
-        }
-        return codFras;
-    }
-
-    public double calcImporteTotalSinIva() {
-        double suma = 0.0;
-        for (int i = 0; i < this.conceptos.length; i++) {
-            suma += this.conceptos[i].getImporteFraSinIva();
-
-        }
-        return suma;
-    }
-
-    public double calcImporteTotalConIva() {
-        double suma = 0.0;
-        for (int i = 0; i < this.conceptos.length; i++) {
-            suma += this.conceptos[i].getImportefinalFra();
-
-        }
-        return suma;
-    }
 
     public String getCodigoEnvio() {
         return codigoEnvio;
@@ -112,6 +114,8 @@ public class EmpresaFacturas extends Empresa implements Serializable, Comparable
         return importeBonificacion;
     }
 
+
+
     /**
      * dos registros están duplicados, son iguales, si tienen el mismo CIF, fecha de envío y código de envío.
      *
@@ -147,11 +151,12 @@ public class EmpresaFacturas extends Empresa implements Serializable, Comparable
         int resultado = 0;
         if (object instanceof EmpresaFacturas) {
             EmpresaFacturas obj = (EmpresaFacturas) object;
-            if (this.getCIF().compareTo(obj.getCIF()) == 0 &&
-                    this.getFechaEnvio().compareTo(obj.getFechaEnvio()) == 0 &&
-                    this.codigoEnvio.compareTo(obj.codigoEnvio) == 0)
+            if (this.getCIF().compareTo(obj.getCIF()) == 0 && this.getFechaEnvio().compareTo(obj.getFechaEnvio()) == 0 &&
+                this.codigoEnvio.compareTo(obj.codigoEnvio) == 0) {
+
                 resultado = 0;
-            else {
+
+            } else {
                 if (this.getCIF().compareTo(obj.getCIF()) != 0) {
                     resultado = this.getCIF().compareTo(obj.getCIF());
                 } else {

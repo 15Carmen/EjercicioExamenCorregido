@@ -1,7 +1,9 @@
 package examen3evaluacion;
 
 public class Concepto {
+
     // Cada concepto estará formado por
+
     private String codFra= ""; //Código de factura: Cadena de 10 caracteres formada por números y letras.
     private Double importeFraSinIva=0.0;// Importe de la factura sin IVA. Número real
     private Double importefinalFra= 0.0;//Importe final de la factura. Número real

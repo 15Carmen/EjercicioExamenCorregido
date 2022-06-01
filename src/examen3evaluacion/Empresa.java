@@ -3,6 +3,7 @@ package examen3evaluacion;
 import java.io.Serializable;
 
 abstract class Empresa implements Serializable {
+
     //atributos
     private String CIF=""; //CIF de la empresa farmacéutica. Alfanumérico de 9 dígitos
     private String nombreEmpresa = "";// Nombre de la empresa farmacéutica. Cadena de longitud variable

@@ -5,13 +5,15 @@ import java.io.ObjectOutputStream;
 import java.util.Set;
 
 public class Main {
+
     //Defino aquí las variables que van a usarse en todos los métodos del programa
-    static final String FILE_INPUT = "facturasmezcladas.txt";//nombre del fichero de entrada, alojado en el directorio  de este proyecto
-    static final String FILE_OUTPUT = "facturasparapagar.bin";//nombre del fichero de salida alojado en el mismo sitio
+
+    static final String FILE_INPUT = "src/Archivos/facturasmezcladas.txt";//nombre del fichero de entrada, alojado en el directorio  de este proyecto
+    static final String FILE_OUTPUT = "src/Archivos/facturasparapagar.bin";//nombre del fichero de salida alojado en el mismo sitio
     static FileReader ficheroEntrada = null;
     static ObjectOutputStream ficheroSalida = null;
     static Set<EmpresaFacturas> setEmpresas = null;//el fichero de entrada lo voy incluir en un Set para eliminar
-    //los duplicados fácilmente, solo tendré que definir convenientemente el método compareto()
+                                                    //los duplicados fácilmente, solo tendré que definir convenientemente el método compareto()
 
     public static void main(String[] args) {
         Utilidades utilidades=new Utilidades();
